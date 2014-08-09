@@ -1,0 +1,40 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree .
+*/
+
+h2{
+    margin: 0;
+    color: #666;
+    padding-top: 90px;
+    font-size: 52px;
+    font-family: "trebuchet ms", sans-serif;
+}
+.item{
+    background: cyan;
+    text-align: center;
+    height: 500px !important;
+}
+.carousel{
+   margin-top: 50px;
+   position: absolute;
+   margin-bottom: 20px;
+   line-height:1;
+   top:0;
+   left:0;
+   min-width:100%;
+   min-height: 500px;
+   max-height: 600px; // ADD a max height, so it doesn't keep increasing when you scroll down
+}
+
+.bs-example{
+	margin: 20px;
+}
+
+div.navbar{
+background: red;
+color:#fff
+}

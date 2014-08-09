@@ -1,0 +1,25 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.card{
+  padding: 1px;
+  border:  1px solid black;
+  background-color: white;
+  margin-bottom: 10px;
+  height: 300px;
+  width: 300px;
+}
+
+.pricebox {
+  height: 35px;
+  width: 50px;
+  position: absolute;
+  background-color: #FF5351;
+  left: 0%
+}
+
+.prod-img{
+  position:absolute;
+   top:20%;
+   left:15%;
+}

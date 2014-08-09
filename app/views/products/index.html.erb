@@ -1,0 +1,20 @@
+
+
+<% if !user_signed_in? %>
+  <%=render partial: 'layouts/carousel' %>
+<% else %>
+  <%= paginate @products %>
+  <% @products.in_groups_of(4, false) do |products| %>
+    <div class="row">
+      <% products.each do |product| %>
+        <div class="col-md-3 card">
+          <div class="pricebox">
+              <p class="price"> <%= number_to_currency product.price %> </p>
+          </div>
+          <%= image_tag product.image, size: "200x200", class: "prod-img"%>
+        </div>
+      <% end %>
+      <br>
+    </div>
+  <% end %>
+<% end %>
