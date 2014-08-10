@@ -4,14 +4,16 @@
   <%=render partial: 'layouts/carousel' %>
 <% else %>
   <%= paginate @products %>
-  <% @products.in_groups_of(4, false) do |products| %>
+  <% @products.in_groups_of(3, false) do |products| %>
     <div class="row">
       <% products.each do |product| %>
         <div class="col-md-3 card">
           <div class="pricebox">
-              <p class="price"> <%= number_to_currency product.price %> </p>
+              <p class="price"> <%= number_to_currency product.list_price %> </p>
           </div>
-          <%= image_tag product.image, size: "200x200", class: "prod-img"%>
+          <%= link_to product do %>
+            <%= image_tag product.image, size: "200x200", class: "prod-img"%>
+          <% end %>
         </div>
       <% end %>
       <br>

@@ -2,13 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .card{
-  padding: 1px;
-  border:  1px solid black;
+  border: 1px solid #f2e1f2;
   background-color: white;
   margin-bottom: 10px;
   height: 300px;
   width: 300px;
+  padding: 1px;
+  margin-right: 20px;
 }
+
+
 
 .pricebox {
   height: 35px;
@@ -22,4 +25,45 @@
   position:absolute;
    top:20%;
    left:15%;
+}
+
+[class*="col-"] {padding: 0 7.5px;};
+
+#list_price {
+  color: #26A65B;
+  font-size: 30px;
+}
+
+#msrp {
+  text-decoration: line-through;
+}
+
+#you-save{
+  color: #F22613;
+  font-size: 20px;
+}
+
+.pic {
+  border: 10px solid yellow;
+  overflow: hidden;
+
+  -webkit-box-shadow: 5px 5px 5px #111;
+          box-shadow: 5px 5px 5px #111;
+}
+
+.grow img {
+  height: 300px;
+  width: 300px;
+  left: 50%;
+
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+.grow img:hover {
+  width: 350px;
+  height: 350px;
 }

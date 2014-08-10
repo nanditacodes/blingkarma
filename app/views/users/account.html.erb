@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <ul class="nav nav-tabs">
+    <li class="active"> <%=link_to "My Personal info", edit_user_path %> </li>
+    <li> <%=link_to "My Order History", "" %> </li>
+  </ul>
+<% end %>

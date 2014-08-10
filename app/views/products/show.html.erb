@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-5 grow pic">
+    <%=image_tag @product.image, size: "300x300"%>
+  </div>
+  <div class="col-md-7">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <%= @product.title %>
+      </li>
+      <li class="list-group-item" id="list_price">
+        <%= number_to_currency @product.list_price %>
+      </li>
+      <% if @product.discount_percent.to_f > 0 %>
+        <li class="list-group-item" >
+          MSRP:
+          <span id="msrp"><%= number_to_currency @product.price %></span>
+          <br><br>
+          <span id="you-save">You Save: <%= number_to_percentage(@product.discount_percent, precision: 0) %></span>
+        </li>
+      <% end %>
+      <li class="list-group-item">
+        <%= @product.available? %>
+      </li>
+    </ul>
+    <div style="float: left">
+      <%= button_to "Add to cart", "" , class: "btn btn-primary" %>
+    </div>
+    <div style="float: right">
+      <%= button_to "View reviews", "" , class: "btn btn-primary" %>
+    </div>
+    <div style="clear:both;">
+    </div>
+
+  </div>
+</div>

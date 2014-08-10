@@ -8,29 +8,43 @@
 
 Category.destroy_all
 Product.destroy_all
+Order.destroy_all
+OrderProduct.destroy_all
 
 cat1 = Category.create! name: "Necklace"
 cat2 = Category.create! name: "Bracelet"
 cat3 = Category.create! name: "Earring"
-cat4 = Category.create! name: "Clearance"
 
 # Neclaces
-Product.create! title: "Necklace1", category_id: cat1.id, image: "necklace1.jpg", price: 15, list_price: 15, available: true, on_sale: false
-Product.create! title: "Necklace2", category_id: cat1.id, image: "necklace2.jpg", price: 20, list_price: 20, available: true, on_sale: false
-Product.create! title: "Necklace3", category_id: cat1.id, image: "necklace3.jpg", price: 25, list_price: 25, available: true, on_sale: false
-Product.create! title: "Necklace4", category_id: cat1.id, image: "necklace4.jpg", price: 30, list_price: 30, available: true, on_sale: false
-Product.create! title: "Necklace5", category_id: cat4.id, image: "necklace5.jpg", price: 35, list_price: 15, available: true, on_sale: true
+p1 = Product.create! title: "Necklace1", category_id: cat1.id, image: "necklace1.jpg", price: 15, discount_percent: 15, available: true, on_sale: false
+p2 = Product.create! title: "Necklace2", category_id: cat1.id, image: "necklace2.jpg", price: 20, available: true, on_sale: false
+p3 = Product.create! title: "Necklace3", category_id: cat1.id, image: "necklace3.jpg", price: 25, available: true, on_sale: false
+p4 = Product.create! title: "Necklace4", category_id: cat1.id, image: "necklace4.jpg", price: 30, available: true, on_sale: false
+p5 = Product.create! title: "Necklace5", category_id: cat1.id, image: "necklace5.jpg", price: 35, available: true, on_sale: true
 
 #Earrings
-Product.create! title: "Earring1", category_id: cat3.id, image: "earring1.jpg", price: 15, list_price: 15, available: true, on_sale: false
-Product.create! title: "Earring2", category_id: cat3.id, image: "earring2.jpg", price: 20, list_price: 20, available: true, on_sale: false
-Product.create! title: "Earring3", category_id: cat3.id, image: "earring3.jpg", price: 25, list_price: 25, available: true, on_sale: false
-Product.create! title: "Earring4", category_id: cat3.id, image: "earring4.jpg", price: 30, list_price: 30, available: true, on_sale: false
-Product.create! title: "Earring5", category_id: cat4.id, image: "earring5.jpg", price: 35, list_price: 15, available: true, on_sale: true
+p6 = Product.create! title: "Earring1", category_id: cat3.id, image: "earring1.jpg", price: 15, available: true, on_sale: false
+p7 = Product.create! title: "Earring2", category_id: cat3.id, image: "earring2.jpg", price: 20, available: true, on_sale: false
+p8 = Product.create! title: "Earring3", category_id: cat3.id, image: "earring3.jpg", price: 25, available: true, on_sale: false
+p9 = Product.create! title: "Earring4", category_id: cat3.id, image: "earring4.jpg", price: 30, available: true, on_sale: false
+p10 = Product.create! title: "Earring5", category_id: cat3.id, image: "earring5.jpg", price: 35, available: true, on_sale: true
 
 #Bracelets
-Product.create! title: "Bracelet1", category_id: cat2.id, image: "bracelet1.jpg", price: 15, list_price: 15, available: true, on_sale: false
-Product.create! title: "Bracelet2", category_id: cat2.id, image: "bracelet2.jpg", price: 20, list_price: 20, available: true, on_sale: false
-Product.create! title: "Bracelet3", category_id: cat2.id, image: "bracelet3.jpg", price: 25, list_price: 25, available: true, on_sale: false
-Product.create! title: "Bracelet4", category_id: cat2.id, image: "bracelet4.jpg", price: 30, list_price: 30, available: true, on_sale: false
-Product.create! title: "Bracelet5", category_id: cat4.id, image: "bracelet5.jpg", price: 35, list_price: 15, available: true, on_sale: true
+p11 = Product.create! title: "Bracelet1", category_id: cat2.id, image: "bracelet1.jpg", price: 15, available: true, on_sale: false
+p12 = Product.create! title: "Bracelet2", category_id: cat2.id, image: "bracelet2.jpg", price: 20, available: true, on_sale: false
+p13 = Product.create! title: "Bracelet3", category_id: cat2.id, image: "bracelet3.jpg", price: 25, available: true, on_sale: false
+p14 = Product.create! title: "Bracelet4", category_id: cat2.id, image: "bracelet4.jpg", price: 30, available: true, on_sale: false
+p15 = Product.create! title: "Bracelet5", category_id: cat2.id, image: "bracelet5.jpg", price: 35, available: true, on_sale: true
+
+
+#Orders
+o1 = Order.create! user_id: 1, order_status: "in progress"
+o2 = Order.create! user_id: 1, order_status: "in progress"
+o3 = Order.create! user_id: 1, order_status: "in progress"
+
+#Order products
+op1 = OrderProduct.create! order_id: o1.id, product_id: p1.id, quantity: 1, price: p1.list_price
+op2 = OrderProduct.create! order_id: o1.id, product_id: p6.id, quantity: 2, price: p6.list_price
+op3 = OrderProduct.create! order_id: o1.id, product_id: p11.id, quantity: 1, price: p11.list_price
+op4 = OrderProduct.create! order_id: o2.id, product_id: p7.id, quantity: 3, price: p7.list_price
+op5 = OrderProduct.create! order_id: o3.id, product_id: p13.id, quantity: 4, price: p13.list_price
