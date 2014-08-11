@@ -16,4 +16,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def search
+    puts params[:search]
+    @products = Product.where("title ilike ?", "%#{params[:search]}%").page(params[:page]).per(10)
+    render 'products/index'
+  end
+
 end

@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   get "edit" => "users#edit", as: :edit_user
   patch "update" => "users#update", as: :update_user
 
+  get "/search" => "products#search", as: :search
+
 
 end
