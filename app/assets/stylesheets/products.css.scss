@@ -104,3 +104,18 @@
 #searchbox input:-moz-placeholder {
 	color: transparent;
 }
+
+.Clearance {/** text **/
+font:bold 2.5em/1.5em Georgia, "Times New Roman", Times, serif;
+color: red;
+background: black;
+text-align:center;
+position: absolute;
+/**adjust as needed**/
+top: 20%;
+left: 5%;
+/**note: CSS3 TRANSFORM: ROTATE DOESN'T WORK IN ALL BROWSERS YET**/
+-webkit-transform: rotate(-20deg); /**safari, chrome**/
+-moz-transform: rotate(-20deg); /**firefox**/
+transform: rotate(-20deg); /**other browsers**/
+}

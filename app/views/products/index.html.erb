@@ -13,6 +13,9 @@
           </div>
           <%= link_to product do %>
             <%= image_tag product.image, size: "200x200", class: "prod-img"%>
+            <% if product.on_sale? && params[:sale].blank? %>
+              <p class="Clearance">Clearance</p>
+            <% end %>
           <% end %>
         </div>
       <% end %>
