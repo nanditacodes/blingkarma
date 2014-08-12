@@ -12,11 +12,11 @@ class Product < ActiveRecord::Base
   has_many   :order_products
   has_many   :orders, through: :order_products
 
-  def available?
+  def availability!
     if self.available
       return "In stock"
     else
-      return "Out of stock"
+      return "Not sold anymore"
     end
   end
 

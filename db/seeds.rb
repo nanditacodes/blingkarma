@@ -37,14 +37,18 @@ p14 = Product.create! title: "Bracelet4", category_id: cat2.id, image: "bracelet
 p15 = Product.create! title: "Bracelet5", category_id: cat2.id, image: "bracelet5.jpg", price: 35, available: true, on_sale: true
 
 
-#Orders
-o1 = Order.create! user_id: 1, order_status: "in progress"
-o2 = Order.create! user_id: 1, order_status: "in progress"
-o3 = Order.create! user_id: 1, order_status: "in progress"
+#Orders - can be pending, paid, shipped, cancelled.
+# o1 = Order.create! user_id: 1, order_status: "pending"
+# o2 = Order.create! user_id: 1, order_status: "pending"
+# o3 = Order.create! user_id: 1, order_status: "pending"
+# o4 = Order.create! user_id: 1, order_status: "pending"
+# Order.update o1.id, order_status: "shipped", shipment_date: Time.now
+# Order.update o4.id, order_status: "paid"
+
 
 #Order products
-op1 = OrderProduct.create! order_id: o1.id, product_id: p1.id, quantity: 1, price: p1.list_price
-op2 = OrderProduct.create! order_id: o1.id, product_id: p6.id, quantity: 2, price: p6.list_price
-op3 = OrderProduct.create! order_id: o1.id, product_id: p11.id, quantity: 1, price: p11.list_price
-op4 = OrderProduct.create! order_id: o2.id, product_id: p7.id, quantity: 3, price: p7.list_price
-op5 = OrderProduct.create! order_id: o3.id, product_id: p13.id, quantity: 4, price: p13.list_price
+# op1 = OrderProduct.create! order_id: o1.id, product_id: p1.id, quantity: 1, price: p1.list_price
+# op2 = OrderProduct.create! order_id: o1.id, product_id: p6.id, quantity: 2, price: p6.list_price
+# op3 = OrderProduct.create! order_id: o1.id, product_id: p11.id, quantity: 1, price: p11.list_price
+# op4 = OrderProduct.create! order_id: o2.id, product_id: p7.id, quantity: 3, price: p7.list_price
+# op5 = OrderProduct.create! order_id: o3.id, product_id: p13.id, quantity: 4, price: p13.list_price

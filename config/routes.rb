@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
 
+
+  get 'order_products/index'
+
   resources :products
-
-  get 'users/edit'
-
-  get 'users/update'
+  resources :orders
+  resources :order_products
 
   devise_for :users
-
-
 
   root to: 'products#index'
 
   get 'account' => 'users#account', as: "account"
   get "edit" => "users#edit", as: :edit_user
   patch "update" => "users#update", as: :update_user
+
+  
 
   get "/search" => "products#search", as: :search
 

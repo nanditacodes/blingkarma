@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration
       t.datetime :order_date
       t.datetime :shipment_date
       t.string :order_status
-      t.decimal :order_total, precision: 5, scale: 2
+      t.decimal :order_total, precision: 5, scale: 2, default: 0.0
 
       t.timestamps
     end

@@ -1,0 +1,31 @@
+<div class="panel panel-info">
+  <div class="panel-heading"> Order history </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Order id</th>
+        <th>Order date</th>
+        <th>Order status</th>
+        <th>Order Total</th>
+        <th>Order shipment date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <% if order.products.count > 0 %>
+          <tr>
+            <td><%= link_to order.id, order_products_path(order)%></td>
+            <td><%=order.created_at.strftime "%m/%d/%Y"%></td>
+            <td><%=order.order_status%></td>
+            <td><%=number_to_currency order.order_total%></td>
+            <td>
+              <% if order.shipped? %>
+                <%=order.shipment_date.strftime '%m/%d/%Y'%>
+              <%end%>
+            </td>
+          </tr>
+          <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
