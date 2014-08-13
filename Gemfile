@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'simple_form', '3.1.0.rc2'
-gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'rails4-autocomplete'
 
 group :doc do
