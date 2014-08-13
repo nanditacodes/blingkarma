@@ -6,11 +6,11 @@
     <ul class="list-group">
       <li class="list-group-item">
         <%= @product.title %>
-        <% if (@product.reviews.count == 0) %>
-          <%=link_to "(Be the first to review)", "" %>
-        <% else %>
-          <%=Customer Reviews%>
-        <% end %>
+        <%=link_to "View/Add Reviews", reviews_path(product_id: @product), remote: true %>
+        <br>
+        <%=@product_rating%>
+        <%=render_stars(@product.rating)%>
+
       </li>
       <li class="list-group-item" id="list_price">
         <%= number_to_currency @product.list_price %>
@@ -29,9 +29,14 @@
     </ul>
     <% if @product.available? %>
       <div style="float: left">
-        <%= button_to "Add to cart", orders_path, method: :post , class: "btn btn-primary" %>
+        <%= button_to "Add to cart", orders_path, method: :post , class: "btn btn-lg btn-primary" %>
       </div>
     <% end %>
 
   </div>
+
+</div>
+
+<div class="prod-div">
+  <br><br>
 </div>

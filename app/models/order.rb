@@ -7,4 +7,8 @@ class Order < ActiveRecord::Base
     self.order_status == "shipped" ?  true : false
   end
 
+  def total
+     order_products.map(&:total).sum
+  end
+
 end

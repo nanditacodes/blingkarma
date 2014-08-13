@@ -1,0 +1,8 @@
+$(document).ready(function(){
+  $(".prod-reviews").html("<%=j render partial: 'reviews/list'%>");
+  resetForm($('.prod-reviews'));
+});
+
+function resetForm($form) {
+    $form.find('select, textarea').val('');
+}

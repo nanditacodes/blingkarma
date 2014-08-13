@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.references :product, index: true
       t.references :user, index: true
       t.text :body
+      t.integer :rating
 
       t.timestamps
     end

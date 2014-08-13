@@ -10,6 +10,7 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :discount_percent, precision: 4, scale: 2
       t.boolean :available, default: false
       t.boolean :on_sale, default: false
+      t.integer :rating, default: 0
 
       t.timestamps
     end

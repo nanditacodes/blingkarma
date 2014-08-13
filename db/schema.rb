@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140810134313) do
     t.decimal  "discount_percent", precision: 4, scale: 2
     t.boolean  "available",                                default: false
     t.boolean  "on_sale",                                  default: false
+    t.integer  "rating",                                   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140810134313) do
     t.integer  "product_id"
     t.integer  "user_id"
     t.text     "body"
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -37,6 +37,7 @@ p14 = Product.create! title: "Bracelet4", category_id: cat2.id, image: "bracelet
 p15 = Product.create! title: "Bracelet5", category_id: cat2.id, image: "bracelet5.jpg", price: 35, available: true, on_sale: true
 
 
+
 #Orders - can be pending, paid, shipped, cancelled.
 # o1 = Order.create! user_id: 1, order_status: "pending"
 # o2 = Order.create! user_id: 1, order_status: "pending"

@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many  :orders
   has_many  :reviews
 
+  def user_name
+    name || email
+  end
+
 end
