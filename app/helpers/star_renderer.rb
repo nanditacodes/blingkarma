@@ -17,7 +17,7 @@ class StarsRenderer
   end
 
   def star_image(value)
-    image_tag "#{star_type(value)}_star.gif", :size => '15x15'
+    image_tag "#{star_type(value)}_star.jpg", :size => '15x15'
 
   end
 
