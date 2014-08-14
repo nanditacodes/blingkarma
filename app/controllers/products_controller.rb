@@ -22,4 +22,6 @@ class ProductsController < ApplicationController
     render 'products/index'
   end
 
+
+
 end

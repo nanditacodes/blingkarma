@@ -29,7 +29,7 @@
     </ul>
     <% if @product.available? %>
       <div style="float: left">
-        <%= button_to "Add to cart", orders_path, method: :post , class: "btn btn-lg btn-primary" %>
+        <%= button_to "Add to cart", add_to_order_path(product_id: @product), method: :post , class: "btn btn-lg btn-primary" %>
       </div>
     <% end %>
 

@@ -38,3 +38,7 @@ div.navbar{
 background: red;
 color:#fff
 }
+
+span.glyphicon-shopping-cart {
+    size: 2em;
+}

@@ -1,31 +1,35 @@
-<div class="panel panel-info">
-  <div class="panel-heading"> Order history </div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Order id</th>
-        <th>Order date</th>
-        <th>Order status</th>
-        <th>Order Total</th>
-        <th>Order shipment date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @orders.each do |order| %>
-        <% if order.products.count > 0 %>
+<% @orders.each do |order| %>
+  <div class="panel panel-info">
+    <div class="panel-heading"> Order id:<%= order.id %>&nbsp;&nbsp;&nbsp;Order status: <strong><%=order.order_status%></strong> </div>
+    <table class="table table-bordered table-striped">
+        <thead>
           <tr>
-            <td><%= link_to order.id, order_products_path(order)%></td>
-            <td><%=order.created_at.strftime "%m/%d/%Y"%></td>
-            <td><%=order.order_status%></td>
-            <td><%=number_to_currency order.order_total%></td>
-            <td>
-              <% if order.shipped? %>
-                <%=order.shipment_date.strftime '%m/%d/%Y'%>
-              <%end%>
-            </td>
+            <th></th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
           </tr>
+        </thead>
+        <tbody>
+          <% order.order_products.each do |item| %>
+            <tr>
+              <td><%= image_tag item.product.image, size: "64x64" %></td>
+              <td><%= item.product.title %></td>
+              <td><%= item.quantity %></td>
+              <td><%= number_to_currency item.product.price %></td>
+              <td><%= number_to_currency item.total %></td>
+            </tr>
           <% end %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>Total</strong></td>
+            <td><%= number_to_currency order.total %> </td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+
+<% end %>
