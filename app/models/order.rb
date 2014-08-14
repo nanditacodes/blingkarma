@@ -11,4 +11,8 @@ class Order < ActiveRecord::Base
      order_products.map(&:total).sum
   end
 
+  def total_quantity
+    order_products.map(&:quantity).sum
+  end
+
 end

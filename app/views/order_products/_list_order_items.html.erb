@@ -1,36 +1,55 @@
 <div class="cart">
-  <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Item</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% order.order_products.each do |item| %>
+<h3> You have <%=  pluralize order.total_quantity, 'item' %>  in your shopping bag </h3>
+  <% if  order.order_products.count  > 0 %>
+    <table class="table table-bordered table-striped">
+        <thead>
           <tr>
-            <td><%= image_tag item.product.image, size: "64x64" %></td>
-            <td><%= item.product.title %></td>
-            <td>
-              <%= simple_form_for item, url: update_order_path(order_item_id: item),  remote: true do |f| %>
-              <%= f.input :quantity, label: false, as: :select, collection: (1..5) %>
-              <%= f.submit "Update Cart" %>
-              <% end %>
-            </td>
-            <td><%= number_to_currency item.product.price %></td>
-            <td><%= number_to_currency item.total %></td>
+            <th></th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
           </tr>
-        <% end %>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><strong>Total</strong></td>
-          <td><%= number_to_currency @order.total %> </td>
-        </tr>
-      </tbody>
-  </table>
+        </thead>
+        <tbody>
+          <% order.order_products.each do |item| %>
+            <tr>
+              <td>
+                <%= link_to item.product do %>
+                  <%= image_tag item.product.image, size: "64x64" %>
+                <% end %>
+              </td>
+              <td><%= item.product.title %></td>
+              <td>
+                <%= simple_form_for item, url: update_order_path(order_item_id: item),  remote: true do |f| %>
+                <%= f.input :quantity, label: false, as: :select, collection: (0..5) %>
+                <%= f.submit "Update Cart" %>
+                <% end %>
+              </td>
+              <td><%= number_to_currency item.product.price %></td>
+              <td><%= number_to_currency item.total %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>Total</strong></td>
+            <td><%= number_to_currency @order.total %> </td>
+          </tr>
+        </tbody>
+    </table>
+    <p>
+      <form action="/charge" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_4ZTpi4sGW2JMFGrxlNn6HnQ7"
+          data-name="Scholastic"
+          data-description="PAY (<%= number_to_currency order.total %>)"
+          data-amount="<%= order.total %>">
+        </script>
+      </form>
+    </p>
+
+  <% end %>
 </div>
