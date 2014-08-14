@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   patch "update" => "users#update", as: :update_user
 
 
-  
+
 
   get "/search" => "products#search", as: :search
 
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "/cart" => "order_products#show_order", as: :show_order
   post "/add_to_cart/:product_id" => "order_products#add_to_order", as: :add_to_order
   patch "/update_cart/:order_item_id" => "order_products#update_order", as: :update_order
+  patch "/cancel_order/:order_id" => "order_products#cancel_order", as: :cancel_order
 
 
 end

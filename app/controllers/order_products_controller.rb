@@ -24,22 +24,33 @@ class OrderProductsController < ApplicationController
   end
 
   def find_order
-
     if session[:order_id].present?
       order = Order.find(session[:order_id])
     else
-      order = Order.create!
+      order = Order.create! order_status: "pending"
       session[:order_id] = order.id
     end
-    puts "session[:order_id]: #{session[:order_id]}"
     order
   end
 
   def update_order
     @order = find_order
     order_product = OrderProduct.find(params[:order_item_id])
-    order_product.update(params.require(:order_product).permit(:quantity))
-    order_product.save
+    quantity = params[:order_product][:quantity].to_i
+    if quantity == 0
+      order_product.destroy
+    else
+      order_product.update(params.require(:order_product).permit(:quantity))
+      order_product.save
+    end
+  end
+
+  def cancel_order
+    order = Order.find(params[:order_id])
+    order.order_status = "cancelled"
+    order.save
+    session[:order_id] = nil
+    redirect_to orders_path
   end
 
 end

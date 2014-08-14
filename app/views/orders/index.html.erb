@@ -1,6 +1,10 @@
 <% @orders.each do |order| %>
   <div class="panel panel-info">
-    <div class="panel-heading"> Order id:<%= order.id %>&nbsp;&nbsp;&nbsp;Order status: <strong><%=order.order_status%></strong> </div>
+    <div class="panel-heading">
+      Order id:<%= order.id %>&nbsp;&nbsp;&nbsp;Order status: <strong><%=order.order_status%></strong>&nbsp;&nbsp;&nbsp;
+      <% if order.order_status != "cancelled" %>
+        <%= link_to "Cancel order", cancel_order_path(order_id: order.id), method: :patch, data: {confirm: "Do you really want to cancel the order?" } %> </div>
+      <% end %>
     <table class="table table-bordered table-striped">
         <thead>
           <tr>

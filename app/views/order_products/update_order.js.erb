@@ -1,2 +1,2 @@
 
-$(".cart").html("<%= j render partial: 'cart' %>");
+$(".cart").html("<%= j render partial: 'list_order_items', locals: {order: @order} %>");
