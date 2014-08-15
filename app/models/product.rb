@@ -13,11 +13,14 @@ class Product < ActiveRecord::Base
   has_many   :orders, through: :order_products
 
   def availability!
+    ret_str = ""
     if self.available
-      return "In stock"
+      ret_str = "In stock"
+      ret_str += "; Only #{num_in_stock} copies left" if num_in_stock < 5
     else
-      return "Not sold anymore"
+      ret_str ="Out of stock"
     end
+    ret_str
   end
 
   private

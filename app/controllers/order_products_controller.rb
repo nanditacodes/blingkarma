@@ -25,9 +25,9 @@ class OrderProductsController < ApplicationController
 
   def find_order
     if session[:order_id].present?
-      order = Order.find(session[:order_id])
+       order = Order.find(session[:order_id])
     else
-      order = Order.create! order_status: "pending"
+      order = Order.create! order_status: "pending", user_id: current_user.id
       session[:order_id] = order.id
     end
     order

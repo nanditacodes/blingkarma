@@ -22,7 +22,7 @@
               <td><%= item.product.title %></td>
               <td>
                 <%= simple_form_for item, url: update_order_path(order_item_id: item),  remote: true do |f| %>
-                <%= f.input :quantity, label: false, as: :select, collection: (0..5) %>
+                <%= f.input :quantity, label: false, as: :select, collection: (0..item.product.num_in_stock) %>
                 <%= f.submit "Update Cart" %>
                 <% end %>
               </td>

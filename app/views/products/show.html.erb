@@ -8,7 +8,6 @@
         <%= @product.title %>
         <%=link_to "View/Add Reviews", reviews_path(product_id: @product), remote: true %>
         <br>
-        <%=@product_rating%>
         <%=render_stars(@product.rating)%>
 
       </li>
@@ -27,7 +26,7 @@
         <%= @product.availability! %>
       </li>
     </ul>
-    <% if @product.available? && @product.order_products.count == 0 %>
+    <% if @product.available? %>
       <div style="float: left">
         <%= button_to "Add to cart", add_to_order_path(product_id: @product), method: :post , class: "btn btn-lg btn-primary" %>
       </div>
