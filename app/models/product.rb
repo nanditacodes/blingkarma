@@ -23,6 +23,10 @@ class Product < ActiveRecord::Base
     ret_str
   end
 
+  def sold_out?
+    return true if num_in_stock == 0 
+  end
+
   private
   def calc_list_price
     if self.discount_percent.to_f > 0

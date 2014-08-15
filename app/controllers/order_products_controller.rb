@@ -15,7 +15,7 @@ class OrderProductsController < ApplicationController
     order = find_order
 
     # add to order
-    order.order_products.create quantity: 1, product: product, price: product.price
+    order.order_products.create quantity: 1, product: product, price: product.list_price
 
 
     # redirect_to show cart page
