@@ -26,7 +26,7 @@
                 <%= f.submit "Update Cart" %>
                 <% end %>
               </td>
-              <td><%= number_to_currency item.product.price %></td>
+              <td><%= number_to_currency item.product.list_price %></td>
               <td><%= number_to_currency item.total %></td>
             </tr>
           <% end %>
@@ -39,17 +39,5 @@
           </tr>
         </tbody>
     </table>
-    <p>
-      <form action="/charge" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_4ZTpi4sGW2JMFGrxlNn6HnQ7"
-          data-name="Scholastic"
-          data-description="PAY (<%= number_to_currency order.total %>)"
-          data-amount="<%= order.total %>">
-        </script>
-      </form>
-    </p>
-
   <% end %>
 </div>

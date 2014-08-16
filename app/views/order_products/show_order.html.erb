@@ -1,3 +1,21 @@
-<%= render partial: 'list_order_items', locals: {order: @order} %>
-
-<%= link_to "Continue shopping", root_path %>
+<div class="cart">
+  <%= render partial: 'list_order_items', locals: {order: @order} %>
+</div>
+<% if @order.order_products.count  > 0 %>
+  <div class="payme">
+    <p>
+      <form action="/charge" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_4ZTpi4sGW2JMFGrxlNn6HnQ7"
+          data-name="Scholastic"
+          data-description="PAY (<%= number_to_currency @order.total %>)"
+          data-amount="<%= @order.total %>">
+        </script>
+      </form>
+    </p>
+  </div>
+<% end %>
+<div class="goback">
+  <%= link_to "Continue shopping", root_path %>
+</div>
