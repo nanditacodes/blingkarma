@@ -1,3 +1,20 @@
 <div class="prod-reviews">
-  <%= render partial: 'reviews' %>
+  <% if user_signed_in? %>
+    <% @reviews.each do |review| %>
+      <li>Reviewed by <%=review.user.user_name%>   <%=render_stars(review.rating)%> </li>
+      <p><%= review.body %></p>
+    <% end %>
+    <%= simple_form_for @review, url: create_review_path(product_id: @reviews[0].product), method: :post, remote: true  do |f| %>
+      <%#= f.input :rating, label: "Rating", as: :radio_buttons, collection: (1..5), item_wrapper_class: 'radio-inline' %>
+
+      <b>Your Rating:</b><br>
+      <% (1..5).each do |i| %>
+        <%= f.label i.to_s, style: "margin-top: 5px"  %> <%= f.radio_button(:rating, i) %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      <% end %>
+      <%= f.input :body, label: "Your review:", as: :text, input_html: {rows: 5, cols: 40} %>
+      <%= f.button :submit, "Submit your review", class: "btn btn-primary" %>
+    <% end %>
+
+  <% end %>
 </div>
