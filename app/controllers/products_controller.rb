@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_category, only: [:new, :edit]
+
   def index
     category_name = params[:category]
     on_sale = params[:sale]
@@ -12,6 +14,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
   def show
     @product = Product.find(params[:id])
   end
@@ -23,7 +29,6 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @category = Category.all
     @product = Product.new
   end
 
@@ -39,6 +44,10 @@ class ProductsController < ApplicationController
   private
   def prod_params
     params.require(:product).permit(:category_id, :title, :price, :list_price, :num_in_stock, :image)
+  end
+
+  def set_category
+    @category = Category.all
   end
 
 end

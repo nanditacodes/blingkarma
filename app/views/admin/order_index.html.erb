@@ -1,4 +1,4 @@
-<% if @products.count == 0 %>
+<% if @orders.count == 0 %>
   <h4> No orders in the system yet! </h4>
 <% else %>
   <%= form_tag ship_orders_path, method: :patch do %>
