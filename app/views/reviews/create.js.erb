@@ -4,5 +4,6 @@ $(document).ready(function(){
 });
 
 function resetForm($form) {
-    $form.find('select, textarea').val('');
+    $form.find('textarea').val('');
+    $('input[type="radio"]').prop('checked', false);
 }
