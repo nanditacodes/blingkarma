@@ -8,8 +8,9 @@ class ReviewsController < ApplicationController
   def create
     @review = @product.reviews.build(create_params)
     @review.user_id = current_user.id
-    @product.rating = @product.reviews.average(:rating).to_i
     @product.save
+    rating = @product.reviews.average(:rating).to_i
+    @product.update(rating: rating)
   end
 
   private
