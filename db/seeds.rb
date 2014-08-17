@@ -16,25 +16,25 @@ cat2 = Category.create! name: "Bracelet"
 cat3 = Category.create! name: "Earring"
 
 # Neclaces
-p1 = Product.create! title: "Necklace1", category_id: cat1.id, image: "necklace1.jpg", price: 15, discount_percent: 15, available: true, on_sale: false
-p2 = Product.create! title: "Necklace2", category_id: cat1.id, image: "necklace2.jpg", price: 20, available: true, on_sale: false
-p3 = Product.create! title: "Necklace3", category_id: cat1.id, image: "necklace3.jpg", price: 25, available: true, on_sale: false
-p4 = Product.create! title: "Necklace4", category_id: cat1.id, image: "necklace4.jpg", price: 30, available: true, on_sale: false
-p5 = Product.create! title: "Necklace5", category_id: cat1.id, image: "necklace5.jpg", price: 35, available: true, on_sale: true
-
-#Earrings
-p6 = Product.create! title: "Earring1", category_id: cat3.id, image: "earring1.jpg", price: 15, available: true, on_sale: false
-p7 = Product.create! title: "Earring2", category_id: cat3.id, image: "earring2.jpg", price: 20, available: true, on_sale: false
-p8 = Product.create! title: "Earring3", category_id: cat3.id, image: "earring3.jpg", price: 25, available: true, on_sale: false
-p9 = Product.create! title: "Earring4", category_id: cat3.id, image: "earring4.jpg", price: 30, available: true, on_sale: false
-p10 = Product.create! title: "Earring5", category_id: cat3.id, image: "earring5.jpg", price: 35, available: true, on_sale: true
-
-#Bracelets
-p11 = Product.create! title: "Bracelet1", category_id: cat2.id, image: "bracelet1.jpg", price: 15, available: true, on_sale: false
-p12 = Product.create! title: "Bracelet2", category_id: cat2.id, image: "bracelet2.jpg", price: 20, available: true, on_sale: false
-p13 = Product.create! title: "Bracelet3", category_id: cat2.id, image: "bracelet3.jpg", price: 25, available: true, on_sale: false
-p14 = Product.create! title: "Bracelet4", category_id: cat2.id, image: "bracelet4.jpg", price: 30, available: true, on_sale: false
-p15 = Product.create! title: "Bracelet5", category_id: cat2.id, image: "bracelet5.jpg", price: 35, available: true, on_sale: true
+# p1 = Product.create! title: "Necklace1", category_id: cat1.id, image: "necklace1.jpg", price: 15, discount_percent: 15, available: true, on_sale: false
+# p2 = Product.create! title: "Necklace2", category_id: cat1.id, image: "necklace2.jpg", price: 20, available: true, on_sale: false
+# p3 = Product.create! title: "Necklace3", category_id: cat1.id, image: "necklace3.jpg", price: 25, available: true, on_sale: false
+# p4 = Product.create! title: "Necklace4", category_id: cat1.id, image: "necklace4.jpg", price: 30, available: true, on_sale: false
+# p5 = Product.create! title: "Necklace5", category_id: cat1.id, image: "necklace5.jpg", price: 35, available: true, on_sale: true
+#
+# #Earrings
+# p6 = Product.create! title: "Earring1", category_id: cat3.id, image: "earring1.jpg", price: 15, available: true, on_sale: false
+# p7 = Product.create! title: "Earring2", category_id: cat3.id, image: "earring2.jpg", price: 20, available: true, on_sale: false
+# p8 = Product.create! title: "Earring3", category_id: cat3.id, image: "earring3.jpg", price: 25, available: true, on_sale: false
+# p9 = Product.create! title: "Earring4", category_id: cat3.id, image: "earring4.jpg", price: 30, available: true, on_sale: false
+# p10 = Product.create! title: "Earring5", category_id: cat3.id, image: "earring5.jpg", price: 35, available: true, on_sale: true
+#
+# #Bracelets
+# p11 = Product.create! title: "Bracelet1", category_id: cat2.id, image: "bracelet1.jpg", price: 15, available: true, on_sale: false
+# p12 = Product.create! title: "Bracelet2", category_id: cat2.id, image: "bracelet2.jpg", price: 20, available: true, on_sale: false
+# p13 = Product.create! title: "Bracelet3", category_id: cat2.id, image: "bracelet3.jpg", price: 25, available: true, on_sale: false
+# p14 = Product.create! title: "Bracelet4", category_id: cat2.id, image: "bracelet4.jpg", price: 30, available: true, on_sale: false
+# p15 = Product.create! title: "Bracelet5", category_id: cat2.id, image: "bracelet5.jpg", price: 35, available: true, on_sale: true
 
 
 

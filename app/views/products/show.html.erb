@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-5 grow pic">
-    <%=image_tag @product.image, size: "300x300"%>
+    <%=image_tag @product.image.url(:view), size: "300x300"%>
   </div>
   <div class="col-md-7">
     <ul class="list-group">
@@ -23,10 +23,10 @@
         </li>
       <% end %>
       <li class="list-group-item">
-        <%= @product.availability! %>
+        <%= @product.in_stock! %>
       </li>
     </ul>
-    <% if @product.available? %>
+    <% if @product.available? && !@product.sold_out? %>
       <div style="float: left">
         <%= button_to "Add to cart", add_to_order_path(product_id: @product), method: :post , class: "btn btn-lg btn-primary" %>
       </div>

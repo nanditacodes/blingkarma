@@ -1,0 +1,41 @@
+<%= form_tag ship_orders_path, method: :patch do %>
+  <% @orders.each do |key, value| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        Order status: <strong><%=key%>
+      </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <% if key == "paid" %>
+                  <th></th>
+                <% end %>
+                <th>Order id</th>
+                <th>Order date</th>
+                <th>Total</th>
+                <th>Customer name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% value.each do |item| %>
+                <tr>
+                  <% if key == "paid" %>
+                    <td><%= check_box_tag "order_ids[]", item.id %></td>
+                  <% end %>
+                  <td><%= link_to item.id, "" %></td>
+                  <td><%= item.updated_at.strftime("%A, %b %d %Y")%></td>
+                  <td><%= number_to_currency item.total %></td>
+                  <td><%= item.user.user_name %></td>
+                </tr>
+              <% end %>
+
+            </tbody>
+
+        </table>
+        <% if key == "paid" %>
+          <%= submit_tag "Ship it!", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+
+  <% end %>
+<% end %>

@@ -4,13 +4,13 @@
 <% if @order.order_products.count  > 0 %>
   <div class="payme">
     <p>
-      <form action="/charge" method="POST">
+      <form action="/pay" method="POST">
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_4ZTpi4sGW2JMFGrxlNn6HnQ7"
-          data-name="Scholastic"
+          data-key="pk_test_hs3n0RxmCOYsP5LdNaG0gfYi"
+          data-name="Bling Karma"
           data-description="PAY (<%= number_to_currency @order.total %>)"
-          data-amount="<%= @order.total %>">
+          data-amount="<%= @order.total_in_cents %>">
         </script>
       </form>
     </p>

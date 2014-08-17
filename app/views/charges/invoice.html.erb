@@ -1,0 +1,10 @@
+<p>
+  <h3>Thank you for your order </h3>
+  <% if current_user.phone_number.blank? %>
+<h4 style="color:red;">Please set up your phone number if you would us to text you when your order has been shipped.</h4>
+  <% end %>
+  <br>
+  <h4>Please click <%= link_to "here", orders_path %> to view your order history.</h4>
+  <br><br><br>
+  <%= link_to "Continue shopping", root_path %>
+</p>

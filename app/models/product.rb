@@ -12,19 +12,25 @@ class Product < ActiveRecord::Base
   has_many   :order_products
   has_many   :orders, through: :order_products
 
-  def availability!
+  mount_uploader :image, ImageUploader
+
+  def in_stock!
     ret_str = ""
-    if self.available
+    if !sold_out?
       ret_str = "In stock"
-      ret_str += "; Only #{num_in_stock} copies left" if num_in_stock < 5
+      ret_str += "; Only #{num_in_stock} items left !!" if num_in_stock < 5
     else
       ret_str ="Out of stock"
     end
     ret_str
   end
 
+  def availability
+    self.available ? "Available" : "Retired"
+  end
+
   def sold_out?
-    return true if num_in_stock == 0 
+    return true if num_in_stock == 0
   end
 
   private

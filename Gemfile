@@ -13,6 +13,10 @@ gem 'devise'
 gem 'simple_form', '3.1.0.rc2'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'rails4-autocomplete'
+gem 'stripe'
+gem 'carrierwave'
+gem "mini_magick"
+gem 'fog'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -23,6 +27,7 @@ group :development, :test do
   gem 'pry'
   gem 'quiet_assets'
   gem 'binding_of_caller'
+  gem 'dotenv-rails'
 end
 
 group :test do

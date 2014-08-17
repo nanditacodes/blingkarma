@@ -15,4 +15,8 @@ class Order < ActiveRecord::Base
     order_products.map(&:quantity).sum
   end
 
+  def total_in_cents
+    (total * 100).to_i
+  end
+
 end

@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :price, precision: 5, scale: 2
       t.decimal :list_price, precision: 5, scale: 2
       t.decimal :discount_percent, precision: 4, scale: 2
-      t.boolean :available, default: false
+      t.boolean :available, default: true
       t.boolean :on_sale, default: false
       t.integer :rating, default: 0
 

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates :name, presence: true, on: [:update]
+  validates :name, presence: true, on: [:update], if: Proc.new { |u| u.email != "admin@blingkarma.com" }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

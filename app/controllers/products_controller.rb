@@ -22,6 +22,23 @@ class ProductsController < ApplicationController
     render 'products/index'
   end
 
+  def new
+    @category = Category.all
+    @product = Product.new
+  end
 
+  def create
+    @product = Product.create(prod_params)
+    if @product.save
+      redirect_to admin_home_path
+    else
+      render new_product_path
+    end
+  end
+
+  private
+  def prod_params
+    params.require(:product).permit(:category_id, :title, :price, :list_price, :num_in_stock, :image)
+  end
 
 end

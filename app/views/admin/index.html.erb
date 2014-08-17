@@ -1,0 +1,32 @@
+<%= paginate @products %>
+<div style="float:right;margin-top: 20px;">
+  <%= button_to "Add a new product", new_product_path, method: :get, class: "btn btn-large btn-primary" %>
+</div>
+<br><br><br><br>
+<div class="panel panel-info">
+  <div class="panel-heading">Product Listing</div>
+  <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>MSRP</th>
+          <th>List Price</th>
+          <th>Inventory</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do | product| %>
+          <tr>
+            <td><%= image_tag product.image.url(:view), size: "64x64" %></td>
+            <td><%= link_to product.title, product_path(product) %></td>
+            <td><%= number_to_currency product.price %></td>
+            <td><%= number_to_currency product.list_price %></td>
+            <td><%= product.num_in_stock %></td>
+            <td><%= product.availability %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>

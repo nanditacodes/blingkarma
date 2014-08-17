@@ -12,12 +12,15 @@
               <p class="price"> <%= number_to_currency product.list_price %> </p>
           </div>
           <%= link_to product do %>
-            <%= image_tag product.image, size: "200x200", class: "prod-img"%>
+            <%= image_tag product.image.url(:view), size: "200x200", class: "prod-img"%>
             <% if product.on_sale? && params[:sale].blank? %>
               <p class="diagonal-print">Clearance</p>
             <% end %>
             <% if !product.available? %>
               <p class="diagonal-print">Retired</p>
+            <% end %>
+            <% if product.sold_out? %>
+              <p class="diagonal-print">Sold out</p>
             <% end %>
           <% end %>
         </div>
