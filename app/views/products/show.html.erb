@@ -14,12 +14,12 @@
       <li class="list-group-item" id="list_price">
         <%= number_to_currency @product.list_price %>
       </li>
-      <% if @product.discount_percent.to_f > 0 %>
+      <% if @product.list_price.to_f != @product.price.to_f %>
         <li class="list-group-item" >
           MSRP:
           <span id="msrp"><%= number_to_currency @product.price %></span>
           <br><br>
-          <span id="you-save">You Save: <%= number_to_percentage(@product.discount_percent, precision: 0) %></span>
+          <span id="you-save">You Save: <%= number_to_percentage(@product.discount_percent, precision: 2) %></span>
         </li>
       <% end %>
       <li class="list-group-item">

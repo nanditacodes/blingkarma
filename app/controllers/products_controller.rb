@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_category, only: [:new, :edit]
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     category_name = params[:category]
@@ -16,11 +17,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def retire
@@ -39,21 +38,32 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(prod_params)
-    if @product.save
+    if @product.create(prod_params)
       redirect_to admin_home_path
     else
-      render new_product_path
+      render :new
+    end
+  end
+
+  def update
+    if @product.update(prod_params)
+      redirect_to admin_home_path
+    else
+      render :edit
     end
   end
 
   private
   def prod_params
-    params.require(:product).permit(:category_id, :title, :price, :list_price, :num_in_stock, :image)
+    params.require(:product).permit(:category_id, :title, :price, :list_price, :num_in_stock, :discount_percent,:image)
   end
 
   def set_category
     @category = Category.all
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
 end

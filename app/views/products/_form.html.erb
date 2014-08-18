@@ -1,12 +1,21 @@
-
-<%= simple_form_for @product, url: products_path, method: :post  do |f| %>
+<%= simple_form_for @product  do |f| %>
   <%= f.input :title %>
   <% if new %>
     <%= f.input :image, as: :file, required: false, label: 'Upload image' %>
-    <%= f.input :category_id, as: :select, collection: @category, :label => "Category" ,include_blank: false %>
+    <%= f.input :category_id, as: :select, collection: @category, label: "Category" ,include_blank: false %>
   <% end %>
   <%= f.input :price %>
   <%= f.input :list_price %>
   <%= f.input :num_in_stock, as: :select, collection: 0..10 %>
-  <%= f.submit "Save" %>
+  <%= f.hidden_field :discount_percent, value: "" %>
+
+  <%= f.submit "Save", onclick: "return calc_discount();" %>
 <%end %>
+
+<script>
+ function calc_discount(){
+  var list_price = document.getElementById("product_list_price").value;
+  var msrp = document.getElementById("product_price").value;
+  document.getElementById("product_discount_percent").value = msrp - list_price
+}
+</script>
