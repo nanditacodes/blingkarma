@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    if @product.create(prod_params)
+    if @product = Product.create(prod_params)
       redirect_to admin_home_path
     else
       render :new
