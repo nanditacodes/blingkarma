@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
+  patch "cancel_order/:id" => "orders#cancel", as: :cancel_order
+
   get 'account' => 'users#account', as: :account
   get "edit" => "users#edit", as: :edit_user
   patch "update" => "users#update", as: :update_user
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
   get "cart" => "order_products#show_order", as: :show_order
   post "add_to_cart/:product_id" => "order_products#add_to_order", as: :add_to_order
   patch "update_cart/:order_item_id" => "order_products#update_order", as: :update_order
-  patch "cancel_order/:order_id" => "order_products#cancel_order", as: :cancel_order
+
 
   get "admin_home" => "admin#index", as: :admin_home
   get "admin_order" => "admin#order_index", as: :admin_order

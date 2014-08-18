@@ -1,39 +1,44 @@
-<% @orders.each do |order| %>
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      Order number: <strong><%= order.stripe_charge_id %></strong>&nbsp;&nbsp;&nbsp;Order status: <strong><%=order.order_status%></strong>&nbsp;&nbsp;&nbsp;Order date: <strong><%= order.updated_at.strftime("%A, %b %d %Y") %></strong>
-      <% if order.order_status != "cancelled" &&  order.order_status != "shipped" %>
-        <%= link_to "Cancel order", cancel_order_path(order_id: order.id), method: :patch, class: "pull-right", data: {confirm: "Do you really want to cancel the order?" } %>
-      <% end %></div>
-    <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% order.order_products.each do |item| %>
+<% if @orders.count == 0 %>
+  <h4> No orders to display. </h4>
+<% else %>
+  <% @orders.each do |order| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        Order number: <strong><%= order.stripe_charge_id %></strong>&nbsp;&nbsp;&nbsp;Order status: <strong><%=order.order_status%></strong>&nbsp;&nbsp;&nbsp;Order date: <strong><%= order.updated_at.strftime("%A, %b %d %Y") %></strong>
+        <% if order.order_status != "cancelled" &&  order.order_status != "shipped" %>
+          <%= link_to "Cancel order", cancel_order_path(id: order.id), method: :patch, class: "pull-right", data: {confirm: "Do you really want to cancel the order?" } %>
+        <% end %></div>
+      <table class="table table-bordered table-striped">
+          <thead>
             <tr>
-              <td><%= image_tag item.product.image.url(:view), size: "64x64" %></td>
-              <td><%= item.product.title %></td>
-              <td><%= item.quantity %></td>
-              <td><%= number_to_currency item.product.price %></td>
-              <td><%= number_to_currency item.total %></td>
+              <th></th>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
             </tr>
-          <% end %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>Total</strong></td>
-            <td><%= number_to_currency order.total %> </td>
-          </tr>
-        </tbody>
-    </table>
-  </div>
+          </thead>
+          <tbody>
+            <% order.order_products.each do |item| %>
+              <tr>
+                <td><%= image_tag item.product.image.url(:view), size: "64x64" %></td>
+                <td><%= item.product.title %></td>
+                <td><%= item.quantity %></td>
+                <td><%= number_to_currency item.product.price %></td>
+                <td><%= number_to_currency item.total %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Total</strong></td>
+              <td><%= number_to_currency order.total %> </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+
+  <% end %>
 
 <% end %>

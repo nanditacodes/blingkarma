@@ -8,7 +8,6 @@
         <%= @product.title %>
         <%=link_to "View/Add Reviews", reviews_path(product_id: @product), remote: true %>
         <br>
-        <%= debug @product.id %>
         <%=render_stars(@product.rating)%>
 
       </li>

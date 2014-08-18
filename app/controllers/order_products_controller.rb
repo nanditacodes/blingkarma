@@ -34,8 +34,14 @@ class OrderProductsController < ApplicationController
     if session[:order_id].present?
        order = current_user.orders.find(session[:order_id])
     else
-      order = current_user.orders.create! order_status: "pending"
-      session[:order_id] = order.id
+      last_order = current_user.orders.last
+      if last_order.order_status=='pending'
+        order = last_order
+        session[:order_id] = last_order.id
+      else
+        order =  current_user.orders.create! order_status: "pending"
+        session[:order_id] = order.id
+      end
     end
     order
   end
@@ -52,12 +58,6 @@ class OrderProductsController < ApplicationController
     end
   end
 
-  def cancel_order
-    order = current_user.orders.find(params[:order_id])
-    order.order_status = "cancelled"
-    order.save
-    session[:order_id] = nil
-    redirect_to orders_path
-  end
+
 
 end

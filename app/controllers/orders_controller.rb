@@ -8,4 +8,15 @@ class OrdersController < ApplicationController
     redirect_to admin_order_path
   end
 
+  def cancel
+    order = current_user.orders.find(params[:id])
+    order.order_status = "cancelled"
+    # 4. update inventory
+    order.order_products.each do |op|
+      op.product.update(num_in_stock: op.product.num_in_stock + 1)
+    end
+    order.save
+    redirect_to orders_path
+  end
+
 end
