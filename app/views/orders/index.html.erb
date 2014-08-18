@@ -4,7 +4,7 @@
   <% @orders.each do |order| %>
     <div class="panel panel-info">
       <div class="panel-heading">
-        Order number: <strong><%= order.stripe_charge_id %></strong>&nbsp;&nbsp;&nbsp;Order status: <strong><%=order.order_status%></strong>&nbsp;&nbsp;&nbsp;Order date: <strong><%= order.updated_at.strftime("%A, %b %d %Y") %></strong>
+        Order id: <strong><%= order.id %></strong>&nbsp;&nbsp;&nbsp;Order status: <strong><%=order.order_status%></strong>&nbsp;&nbsp;&nbsp;Order date: <strong><%= order.updated_at.strftime("%A, %b %d %Y") %></strong>
         <% if order.order_status != "cancelled" &&  order.order_status != "shipped" %>
           <%= link_to "Cancel order", cancel_order_path(id: order.id), method: :patch, class: "pull-right", data: {confirm: "Do you really want to cancel the order?" } %>
         <% end %></div>

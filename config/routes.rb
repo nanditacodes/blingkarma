@@ -11,7 +11,12 @@ Rails.application.routes.draw do
 
   get 'order_products/index'
 
-  resources :products
+  resources :products do
+    collection do
+      patch :retire
+    end
+  end
+  
   resources :orders do
     collection do
       patch :ship
