@@ -17,6 +17,7 @@ gem 'stripe'
 gem 'carrierwave'
 gem "mini_magick"
 gem 'fog'
+gem 'twilio-ruby'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
