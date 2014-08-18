@@ -3,6 +3,7 @@
 <% else %>
   <%= form_tag ship_orders_path, method: :patch do %>
     <% @orders.each do |key, value| %>
+      <%  next if key == "pending" && value.count == 1 && value.first.total.to_i == 0 %>
       <div class="panel panel-info">
         <div class="panel-heading">
           Order status: <strong><%=key%>
@@ -21,15 +22,17 @@
               </thead>
               <tbody>
                 <% value.each do |item| %>
-                  <tr>
-                    <% if key == "paid" %>
-                      <td><%= check_box_tag "order_ids[]", item.id %></td>
-                    <% end %>
-                    <td><%= link_to item.id, "" %></td>
-                    <td><%= item.updated_at.strftime("%A, %b %d %Y")%></td>
-                    <td><%= number_to_currency item.total %></td>
-                    <td><%= item.user.user_name %></td>
-                  </tr>
+                  <% if item.total.to_i > 0 %>
+                    <tr>
+                      <% if key == "paid" %>
+                        <td><%= check_box_tag "order_ids[]", item.id %></td>
+                      <% end %>
+                      <td><%= link_to item.id, "" %></td>
+                      <td><%= item.updated_at.strftime("%A, %b %d %Y")%></td>
+                      <td><%= number_to_currency item.total %></td>
+                      <td><%= item.user.user_name %></td>
+                    </tr>
+                  <% end %>
                 <% end %>
 
               </tbody>
