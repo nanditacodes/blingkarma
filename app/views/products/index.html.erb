@@ -2,6 +2,8 @@
 
 <% if !user_signed_in? %>
   <%=render partial: 'layouts/carousel' %>
+<% elsif @products.count == 0 %>
+  <h4> No available products to display </h4>
 <% else %>
   <%= paginate @products %>
   <% @products.in_groups_of(3, false) do |products| %>

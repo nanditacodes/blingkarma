@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.all.page(params[:page]).per(10)
     end
+    @products = @products.where(available: true)
   end
 
   def edit
@@ -20,6 +21,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+  end
+
+  def retire
+    Product.where(id: params[:product_ids]).update_all(available: false)
+    redirect_to admin_home_path
   end
 
   def search

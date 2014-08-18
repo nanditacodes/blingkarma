@@ -2,35 +2,41 @@
   <h4> No inventory to display!</h4>
 <% else %>
   <%= paginate @products %>
+
   <div style="float:right;margin-top: 20px;">
     <%= button_to "Add a new product", new_product_path, method: :get, class: "btn btn-large btn-primary" %>
   </div>
-  <br><br><br><br>
-  <div class="panel panel-info">
-    <div class="panel-heading">Product Listing</div>
-    <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>MSRP</th>
-            <th>List Price</th>
-            <th>Inventory</th>
-            <th>Availability</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @products.each do | product| %>
+    <br><br><br><br>
+  <%= form_tag retire_products_path, method: :patch do %>
+    <div class="panel panel-info">
+      <div class="panel-heading">Product Listing</div>
+      <table class="table table-bordered table-striped">
+          <thead>
             <tr>
-              <td><%= image_tag product.image.url(:view), size: "64x64" %></td>
-              <td><%= link_to product.title, edit_product_path(id:product) %></td>
-              <td><%= number_to_currency product.price %></td>
-              <td><%= number_to_currency product.list_price %></td>
-              <td><%= product.num_in_stock %></td>
-              <td><%= product.availability %></td>
+              <th></th>
+              <th></th>
+              <th>Name</th>
+              <th>MSRP</th>
+              <th>List Price</th>
+              <th>Inventory</th>
+              <th>Availability</th>
             </tr>
-          <% end %>
-        </tbody>
-    </table>
-  </div>
+          </thead>
+          <tbody>
+            <% @products.each do | product| %>
+              <tr>
+                <td><%= check_box_tag "product_ids[]", product.id %></td>
+                <td><%= image_tag product.image.url(:view), size: "64x64" %></td>
+                <td><%= link_to product.title, edit_product_path(id:product) %></td>
+                <td><%= number_to_currency product.price %></td>
+                <td><%= number_to_currency product.list_price %></td>
+                <td><%= product.num_in_stock %></td>
+                <td><%= product.availability %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+    <%= submit_tag "Retire selected products", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
