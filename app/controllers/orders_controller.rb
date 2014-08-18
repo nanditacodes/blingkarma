@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     order.order_status = "cancelled"
     # 4. update inventory
     order.order_products.each do |op|
-      op.product.update(num_in_stock: op.product.num_in_stock + 1)
+      op.product.update(num_in_stock: op.product.num_in_stock + op.quantity)
     end
     order.save
     redirect_to orders_path

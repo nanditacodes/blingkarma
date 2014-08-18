@@ -1,21 +1,7 @@
 <div class="cart">
   <%= render partial: 'list_order_items', locals: {order: @order} %>
 </div>
-<% if @order.order_products.count  > 0 %>
-  <div class="payme">
-    <p>
-      <form action="/pay" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_hs3n0RxmCOYsP5LdNaG0gfYi"
-          data-name="Bling Karma"
-          data-description="PAY (<%= number_to_currency @order.total %>)"
-          data-amount="<%= @order.total_in_cents %>">
-        </script>
-      </form>
-    </p>
-  </div>
-<% end %>
+
 <div class="goback">
   <%= link_to "Continue shopping", root_path %>
 </div>

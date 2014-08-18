@@ -1,5 +1,2 @@
 
 $(".cart").html("<%= j render partial: 'list_order_items', locals: {order: @order} %>");
-<% if @order.order_products.count == 0 %>
-  $(".payme").hide();
-<% end %>
