@@ -6,7 +6,11 @@
   <% end %>
   <%= f.input :price %>
   <%= f.input :list_price %>
-  <%= f.input :num_in_stock, as: :select, collection: 0..10 %>
+  <% if new %>
+    <%= f.input :num_in_stock, as: :select, collection: 0..10 %>
+  <% else %>
+    <%= f.input :num_in_stock, as: :select, collection: 0..@product.num_in_stock %>
+  <% end %>
   <%= f.hidden_field :discount_percent, value: "" %>
 
   <%= f.submit "Save", onclick: "return calc_discount();" %>

@@ -32,10 +32,8 @@ h2{
 
 
 #myCarousel .item img {
-  margin-left: 100px;
-  margin-right: 100px;
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 300px;
   vertical-align: middle;
 }
 

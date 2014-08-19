@@ -1,5 +1,6 @@
-
-<h3> You have <%=  pluralize order.total_quantity, 'item' %>  in your shopping bag </h3>
+<% if !current_user.admin %>
+  <h3> You have <%=  pluralize order.total_quantity, 'item' %>  in your shopping bag </h3>
+<% end %>
   <% if  order.order_products.count  > 0 %>
     <table class="table table-bordered table-striped">
         <thead>
@@ -21,25 +22,32 @@
               </td>
               <td><%= item.product.title %></td>
               <td>
-                <%= simple_form_for item, url: update_order_path(order_item_id: item),  remote: true do |f| %>
-                <%= f.input :quantity, label: false, as: :select, collection: (0..item.product.num_in_stock) %>
-                <%= f.submit "Update Cart" %>
+                <% if current_user.admin? %>
+                  <%= item.quantity %>
+                <% else %>
+                  <%= simple_form_for item, url: update_order_path(order_item_id: item),  remote: true do |f| %>
+                  <%= f.input :quantity, label: false, as: :select, collection: (0..item.product.num_in_stock) %>
+                  <%= f.submit "Update Cart" %>
+                  <% end %>
                 <% end %>
               </td>
-              <td><%= number_to_currency item.product.list_price %></td>
+              <td><%= number_to_currency item.price %></td>
               <td><%= number_to_currency item.total %></td>
             </tr>
           <% end %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>Total</strong></td>
-            <td><%= number_to_currency @order.total %> </td>
-          </tr>
+          <% if !current_user.admin? %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Total</strong></td>
+              <td><%= number_to_currency @order.total %> </td>
+            </tr>
+          <% end %>
         </tbody>
     </table>
 
+  <% if !current_user.admin %>
     <div class="payme">
       <p>
         <form action="/pay" method="POST">
@@ -53,5 +61,6 @@
         </form>
       </p>
     </div>
+  <% end %>
 
   <% end %>

@@ -1,0 +1,4 @@
+ $(document).ready(function(){
+   $('.modal-body').html("<%= j render partial: 'order_products/list_order_items', locals: {order: @order} %>");
+   $('#myModal').modal('show');
+});
