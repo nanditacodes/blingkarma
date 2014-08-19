@@ -1,5 +1,16 @@
 class Product < ActiveRecord::Base
 
+  include PgSearch
+  pg_search_scope :search,
+                  :against => :title,
+                  :using => {
+                    :tsearch => {
+                      :prefix => true,
+                      :dictionary => "english"
+                      }
+                    }
+
+
   validates :title, presence: true, uniqueness: true, on: [:create]
   validates :price, numericality: { greater_than: 0 }
   validates :list_price, numericality: { greater_than: 0 }
@@ -32,5 +43,13 @@ class Product < ActiveRecord::Base
     return true if num_in_stock == 0
   end
 
-  
+  def self.blingsearch(params)
+    if params[:search].blank?
+      Product.all
+    else
+      Product.search(params[:search])
+    end
+  end
+
+
 end

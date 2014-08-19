@@ -2,18 +2,25 @@ class ProductsController < ApplicationController
   before_action :set_category, only: [:new, :edit]
   before_action :set_product, only: [:show, :edit, :update]
 
+  respond_to :html, :json
+
   def index
-    category_name = params[:category]
-    on_sale = params[:sale]
-    if on_sale.present?
-      @products = Product.where(on_sale: true).page(params[:page]).per(10)
-    elsif category_name.present?
-      cat_id = Category.find_by(name: params[:category])
-      @products = Product.where("category_id = ? and on_sale = ?", cat_id, false).page(params[:page]).per(10)
+    if params[:search].present?
+      @products = Product.blingsearch(params).page(params[:page]).per(10)
+      respond_with @products
     else
-      @products = Product.all.page(params[:page]).per(10)
+      category_name = params[:category]
+      on_sale = params[:sale]
+      if on_sale.present?
+        @products = Product.where(on_sale: true).page(params[:page]).per(10)
+      elsif category_name.present?
+        cat_id = Category.find_by(name: params[:category])
+        @products = Product.where("category_id = ? and on_sale = ?", cat_id, false).page(params[:page]).per(10)
+      else
+        @products = Product.all.page(params[:page]).per(10)
+      end
+      @products = @products.where(available: true)
     end
-    @products = @products.where(available: true)
   end
 
   def edit
@@ -28,9 +35,8 @@ class ProductsController < ApplicationController
   end
 
   def search
-    puts params[:search]
-    @products = Product.where("title ilike ?", "%#{params[:search]}%").page(params[:page]).per(10)
-    render 'products/index'
+    @products = Product.blingsearch(params).page(params[:page]).per(10)
+    redirect_to @products
   end
 
   def new

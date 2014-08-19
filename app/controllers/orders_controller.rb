@@ -17,14 +17,12 @@ class OrdersController < ApplicationController
     params[:order_ids].each do |oid|
       user_id = Order.find(oid).user_id
       if user_id.present? && (user_phone_number = User.find(user_id).phone_number).present?
-        puts ("******** phone number: #{user_phone_number} ************")
         @client.account.messages.create({
           from: '+12625814508',
           to:   "+1#{user_phone_number}",
-          body: 'Your order has been shipped. Thank you for shopping with Bling Karma',
+          body: "Your order id #{oid.id} has been shipped. Thank you for shopping with Bling Karma",
         })
       end
-      puts ("******** user info not present - maybe phone number absent *******")
     end
 
     redirect_to admin_order_path

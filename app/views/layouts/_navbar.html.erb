@@ -82,7 +82,7 @@
                 </li>
               <% end %>
               <li>
-                <%= form_tag(search_path, {id: "searchbox", method: :get}) do %>
+                <%= form_tag(root_path, {id: "searchbox", method: :get}) do %>
                   <%= text_field_tag :search, params[:search], placeholder: "search", value: "",  class: "form-control my-input"%>
               <% end %>
             </li>
