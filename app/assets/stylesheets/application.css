@@ -25,10 +25,20 @@ h2{
    line-height:1;
    top:0;
    left:0;
-   min-width:100%;
-   min-height: 500px;
-   max-height: 600px; // ADD a max height, so it doesn't keep increasing when you scroll down
+   min-width:300px;
+   min-height: 300px;
+   max-height: 500px; // ADD a max height, so it doesn't keep increasing when you scroll down
 }
+
+
+#myCarousel .item img {
+  margin-left: 100px;
+  margin-right: 100px;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+
 
 .bs-example{
 	margin: 20px;
