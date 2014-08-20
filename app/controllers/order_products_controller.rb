@@ -35,7 +35,7 @@ class OrderProductsController < ApplicationController
        order = current_user.orders.find(session[:order_id])
     else
       last_order = current_user.orders.last
-      if last_order.order_status=='pending'
+      if last_order.present? && last_order.order_status=='pending'
         order = last_order
         session[:order_id] = last_order.id
       else
