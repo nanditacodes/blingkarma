@@ -19,8 +19,15 @@ class AdminController < ApplicationController
     @my_array= []
 
     ["shipped", "paid", "pending", "cancelled"].each do |key|
-      if @orders[key].present?
-        @my_array << @orders[key].count
+      order_array = @orders[key]
+      if order_array.present?
+        count = order_array.count
+        order_array.each do |order|
+          if order.total == 0
+            count -=1
+          end
+        end
+        @my_array << count
       else
         @my_array << 0
       end
