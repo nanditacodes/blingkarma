@@ -1,0 +1,20 @@
+<div id="order_chart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+
+<script>
+$(function () {
+  new Highcharts.Chart({
+    chart: { renderTo: 'order_chart',
+             type: 'column'
+                },
+    title: { text: 'Today\'s Order Distribution' },
+    xAxis: { categories: ['Shipped', 'Paid', 'Pending', 'Cancelled'] },
+    yAxis: {
+      title: { text: 'Number of Orders'}
+    },
+    series: [{
+      data: <%= @my_array %>
+    }]
+  });
+});
+</script>

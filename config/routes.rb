@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       patch :retire
     end
   end
-  
+
   resources :orders do
     collection do
       patch :ship
@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
   get "admin_home" => "admin#index", as: :admin_home
   get "admin_order" => "admin#order_index", as: :admin_order
+  get "admin_order_charts" => "admin#order_charts", as: :admin_order_charts
 
 
 end

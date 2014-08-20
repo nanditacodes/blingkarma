@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_action :set_orders, only: [:order_index, :order_charts]
   def index
     @products = Product.all.page(params[:page]).per(10)
   end
@@ -11,7 +12,10 @@ class AdminController < ApplicationController
 
 
   def order_index
-    @orders = Order.all.group_by(&:order_status)
+  end
+
+  def order_charts
+
     @my_array= []
 
     ["shipped", "paid", "pending", "cancelled"].each do |key|
@@ -21,7 +25,11 @@ class AdminController < ApplicationController
         @my_array << 0
       end
     end
+  end
 
+  private
+  def set_orders
+    @orders = Order.all.group_by(&:order_status)
   end
 
 end
