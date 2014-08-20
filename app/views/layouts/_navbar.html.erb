@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
               </button>
               <%= link_to root_path, class: "navbar-brand" do %>
-                <%= image_tag "heart.png", size: "32x32" %> Bling Karma
+                <%= image_tag "heart.png", size: "32x32" %> <div id="my-brand" style="display: inline;"> Bling Karma </div>
               <% end %>
             </div>
 
@@ -58,7 +58,7 @@
       <!-- /.container -->
       <div class="container">
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
               <% if current_user.admin? %>
                 <li class="active">

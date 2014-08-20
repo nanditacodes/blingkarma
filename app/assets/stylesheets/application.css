@@ -30,15 +30,21 @@ h2{
    max-height: 500px; // ADD a max height, so it doesn't keep increasing when you scroll down
 }
 
+#myCarousel .item {
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
 
-#myCarousel .item img {
-position: absolute;
+/*#myCarousel .item img {
+  position: absolute;
   top: 0;
-  left: 0;
-  min-width: 100%;
+  left: 20%;
+  min-width: 60%;
   height: 500px;
   max-width: none;
-}
+}*/
 
 
 .bs-example{
