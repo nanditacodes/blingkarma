@@ -14,7 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){
-  $('#my-brand').arctext({radius: 300});
-});

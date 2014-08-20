@@ -6,6 +6,10 @@
  *= require_tree .
 */
 
+body {
+  background-color: #BFBFBF;
+}
+
 h2{
     margin: 0;
     color: #666;
@@ -30,7 +34,7 @@ h2{
    max-height: 500px; // ADD a max height, so it doesn't keep increasing when you scroll down
 }
 
-#myCarousel .item {
+#myCarousel .item  {
   background-size: auto 100%;
   background-position: center;
   background-repeat: no-repeat;
