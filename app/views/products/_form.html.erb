@@ -3,6 +3,8 @@
   <% if new %>
     <%= f.input :image, as: :file, required: false, label: 'Upload image' %>
     <%= f.input :category_id, as: :select, collection: @category, label: "Category" ,include_blank: false %>
+  <% else %>
+    <%= f.input :category_id, as: :select, disabled: true, collection: @category, label: "Category" ,include_blank: false %>
   <% end %>
   <%= f.input :price %>
   <%= f.input :list_price %>
