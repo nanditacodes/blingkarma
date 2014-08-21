@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
         @client.account.messages.create({
           from: '+12625814508',
           to:   "+1#{user_phone_number}",
-          body: "Your order id #{oid.id} has been shipped. Thank you for shopping with Bling Karma",
+          body: "Your order id #{oid} has been shipped. Thank you for shopping with Bling Karma",
         })
       end
     end
