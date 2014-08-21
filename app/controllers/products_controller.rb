@@ -34,10 +34,7 @@ class ProductsController < ApplicationController
     redirect_to admin_home_path
   end
 
-  def search
-    @products = Product.blingsearch(params).page(params[:page]).per(10)
-    redirect_to @products
-  end
+  
 
   def new
     @product = Product.new
