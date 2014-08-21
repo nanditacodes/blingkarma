@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     if params[:search].present?
-      @products = Product.blingsearch(params).page(params[:page]).per(10)
+      @products = Product.blingsearch(params).where(available: true).page(params[:page]).per(10)
       respond_with @products
     else
       category_name = params[:category]
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
     redirect_to admin_home_path
   end
 
-  
+
 
   def new
     @product = Product.new

@@ -85,18 +85,13 @@
                 </li>
               <% end %>
               <li>
-                <form action='/', method="get", id="searchbox">
-                  <%= text_field_tag :search, params[:search], placeholder: "search", value: "",  class: "form-control my-input"%>
-              </form>
+                <form action='/', method="get", id="searchbox" class="navbar-form navbar-left">
+                    <%= text_field_tag :search, params[:search], placeholder: 'Search', value: "",  class: "form-control typeahead"%>
+                    
+                  </form>
+              </li>
             </ul>
           </div>
       </div>
     </nav>
  <% end %>
-
- <script>
-  $(document).ready(function(){
-    $('#my-brand').arctext({radius: 300, dir: -1});
-  });
-
- </script>

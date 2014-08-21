@@ -3,12 +3,15 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
+ *= require_tree ../../../vendor/assets/stylesheets
  *= require_tree .
 */
 
-body {
+.main {
   background-color: #BFBFBF;
 }
+
+
 
 h2{
     margin: 0;
@@ -33,6 +36,8 @@ h2{
    min-height: 300px;
    max-height: 500px; // ADD a max height, so it doesn't keep increasing when you scroll down
 }
+
+
 
 #myCarousel .item  {
   background-size: auto 100%;
