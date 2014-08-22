@@ -17,10 +17,12 @@ class OrdersController < ApplicationController
     params[:order_ids].each do |oid|
       user_id = Order.find(oid).user_id
       if user_id.present? && (user_phone_number = User.find(user_id).phone_number).present?
+        order_deets = OrderProduct.where(order_id: oid)
+        product_str = order_deets.map(&:product).map(&:title).join(",")
         @client.account.messages.create({
           from: '+12625814508',
           to:   "+1#{user_phone_number}",
-          body: "Your order id #{oid} has been shipped. Thank you for shopping with Bling Karma",
+          body: "Dear customer - Your order id #{oid} with the following items: #{product_str} has been shipped. Thank you for shopping with Bling Karma",
         })
       end
     end

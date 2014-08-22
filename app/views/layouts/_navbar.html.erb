@@ -14,7 +14,7 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 
                 <ul class="nav navbar-nav navbar-right">
                     <% if user_signed_in? %>
@@ -42,10 +42,12 @@
                       </li>
                     <% else %>
                       <li>
-                          <%= link_to "New Customer", new_user_registration_path %>
+                          <%= link_to "New Customer", "#signupModal", data: {toggle: "modal", target: "#signupModal"} %>
+                          <!-- <%= link_to "New Customer", new_user_registration_path %> -->
                       </li>
                       <li>
-                          <%= link_to "Returning Customer", new_user_session_path %>
+                          <!-- <%= link_to "Returning Customer", new_user_session_path %> -->
+                          <%= link_to "Returning Customer", "#loginModal", data: {toggle: "modal", target: "#loginModal"} %>
                       </li>
                     <% end %>
                 </ul>
@@ -87,7 +89,7 @@
               <li>
                 <form action='/', method="get", id="searchbox" class="navbar-form navbar-left">
                     <%= text_field_tag :search, params[:search], placeholder: 'Search', value: "",  class: "form-control typeahead"%>
-                    
+
                   </form>
               </li>
             </ul>
@@ -95,3 +97,84 @@
       </div>
     </nav>
  <% end %>
+
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true" class="modal-decor">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+              <h4 class="modal-title" id="myModalLabel">User login</h4>
+            </div>
+            <div class="modal-body">
+
+              <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+                <%= devise_error_messages! %>
+
+                <div><%= f.label :email %><br />
+
+                <%= f.email_field :email, :autofocus => true %></div>
+
+                <div><%= f.label :password %><br />
+
+                <%= f.password_field :password %></div>
+
+                <% if devise_mapping.rememberable? -%>
+
+                <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+
+                <% end -%>
+
+                <%= f.submit "Sign in", :class => 'btn btn-primary' %>
+              <% end %>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+              <h4 class="modal-title" id="mySignUpModalLabel">New User registration</h4>
+            </div>
+            <div class="modal-body">
+
+              <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+
+                <%= devise_error_messages! %>
+
+                <div><%= f.label :email %><br />
+
+                <%= f.email_field :email, :autofocus => true %></div>
+
+                <div><%= f.label :password %><br />
+
+                <%= f.password_field :password %></div>
+
+                <div><%= f.label :password_confirmation %><br />
+
+                <%= f.password_field :password_confirmation %></div>
+
+                <% if devise_mapping.rememberable? -%>
+
+                <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+
+                <% end -%>
+
+                <%= f.submit "Sign up", :class => 'btn btn-primary' %>
+              <% end %>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+      </div>
+</div>
