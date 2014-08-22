@@ -85,13 +85,14 @@
                 <li>
                     <%= link_to "Clearance", root_path(sale: 'true')  %>
                 </li>
-              <% end %>
-              <li>
-                <form action='/', method="get", id="searchbox" class="navbar-form navbar-left">
-                    <%= text_field_tag :search, params[:search], placeholder: 'Search', value: "",  class: "form-control typeahead"%>
+                <li>
+                  <form action='/', method="get", id="searchbox" class="navbar-form navbar-left">
+                      <%= text_field_tag :search, params[:search], placeholder: 'Search', value: "",  class: "form-control typeahead"%>
 
-                  </form>
-              </li>
+                    </form>
+                </li>
+              <% end %>
+
             </ul>
           </div>
       </div>
