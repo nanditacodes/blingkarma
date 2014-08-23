@@ -1,7 +1,8 @@
 <%= simple_form_for @product  do |f| %>
   <%= f.input :title %>
+  <%= f.input :image, as: :file, required: false, label: 'Upload image' %>
   <% if new %>
-    <%= f.input :image, as: :file, required: false, label: 'Upload image' %>
+
     <%= f.input :category_id, as: :select, collection: @category, label: "Category" ,include_blank: false %>
   <% else %>
     <%= f.input :category_id, as: :select, disabled: true, collection: @category, label: "Category" ,include_blank: false %>
