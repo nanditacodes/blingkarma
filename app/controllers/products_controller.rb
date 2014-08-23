@@ -6,18 +6,18 @@ class ProductsController < ApplicationController
 
   def index
     if params[:search].present?
-      @products = Product.blingsearch(params).where(available: true).page(params[:page]).per(10)
+      @products = Product.blingsearch(params).where(available: true).page(params[:page]).per(9)
       respond_with @products
     else
       category_name = params[:category]
       on_sale = params[:sale]
       if on_sale.present?
-        @products = Product.where(on_sale: true).page(params[:page]).per(10)
+        @products = Product.where(on_sale: true).page(params[:page]).per(9)
       elsif category_name.present?
         cat_id = Category.find_by(name: params[:category])
-        @products = Product.where("category_id = ? and on_sale = ?", cat_id, false).page(params[:page]).per(10)
+        @products = Product.where("category_id = ? and on_sale = ?", cat_id, false).page(params[:page]).per(9)
       else
-        @products = Product.all.page(params[:page]).per(10)
+        @products = Product.all.page(params[:page]).per(9)
       end
       @products = @products.where(available: true)
     end
