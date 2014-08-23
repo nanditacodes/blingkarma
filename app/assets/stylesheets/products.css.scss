@@ -33,7 +33,8 @@
   width: 50px;
   position: absolute;
   background-color: #FF5351;
-  left: 0%
+  left: 0%;
+  z-index: 2;
 }
 
 .prod-img{
@@ -145,4 +146,23 @@ transform: rotate(-20deg); /**other browsers**/
 
 .twitter-typeahead {
   display: inherit !important;
+}
+
+
+.fdw-background{
+  background-color:rgba(0,0,0,0.5);
+  opacity:0;
+  width: 100%;
+  height:100%;
+  position: absolute;
+  z-index: 1;
+  left: 0%;
+}
+.fdw-background h4{
+  margin-top: 20%;
+  font-size:30px;
+  text-align:center;
+  padding:40px 40px 0;
+  color: white;
+  text-align: center;
 }

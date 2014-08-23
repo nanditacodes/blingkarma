@@ -1,5 +1,15 @@
 $(window).ready(function(){
 
+
+    $('.fdw-background').hover(
+        function () {
+            $(this).animate({opacity:'1'}, 200);
+        },
+        function () {
+            $(this).animate({opacity:'0'});
+        }
+    );
+
   var blingItems = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
