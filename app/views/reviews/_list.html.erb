@@ -1,7 +1,12 @@
 <div class="prod-reviews">
   <% if user_signed_in? %>
     <% @reviews.each do |review| %>
-      <li>Reviewed by <%=review.user.user_name%>   <%=render_stars(review.rating)%> </li>
+      <li>
+        Reviewed by <%=review.user.user_name%>
+        <% if review.rating > 0 %>
+          <%=render_stars(review.rating)%>
+        <% end %>
+      </li>
       <p><%= review.body %></p>
     <% end %>
     <%= simple_form_for @review, url: create_review_path(product_id: @product.id), method: :post, remote: true  do |f| %>
