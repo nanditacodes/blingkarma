@@ -39,8 +39,8 @@
 
 .prod-img{
   position:absolute;
-   top:20%;
-   left: 5%;
+   top:15%;
+   left: 15%;
    right: 15%;
 }
 
@@ -159,10 +159,16 @@ transform: rotate(-20deg); /**other browsers**/
   left: 0%;
 }
 .fdw-background h4{
-  margin-top: 20%;
+  margin-top: 10%;
   font-size:30px;
   text-align:center;
-  padding:40px 40px 0;
+  padding: 20px 20px 0;
   color: white;
-  text-align: center;
+}
+
+.biglink {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
 }

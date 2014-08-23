@@ -14,8 +14,10 @@
         <% products.each do |product| %>
           <div class="card-container">
             <div class="col-md-3 card">
-              <div style="opacity: 0; z-index: 1; width: 300px; height: 300px; left: 0%" class="fdw-background">
-                <h4> <%= product.title %> </h4>
+              <div  class="fdw-background">
+                <%= link_to product do %>
+                  <h4> <%= product.title %> </h4>
+                <% end %>
               </div>
               <div class="pricebox">
                   <p class="price"> <%= number_to_currency product.list_price %> </p>
