@@ -18,6 +18,7 @@
                   <th>Order date</th>
                   <th>Total</th>
                   <th>Customer name</th>
+                  <th>Customer phone</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,6 +34,7 @@
                       <td><%= item.updated_at.strftime("%A, %b %d %Y")%></td>
                       <td><%= number_to_currency item.total %></td>
                       <td><%= item.user.user_name %></td>
+                      <td><%= item.user.phone_number %></td>
                     </tr>
                   <% end %>
                 <% end %>
