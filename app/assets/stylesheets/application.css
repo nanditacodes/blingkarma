@@ -7,10 +7,7 @@
  *= require_tree .
 */
 
-.main {
-  background-color: #BFBFBF;
-  background-image: url('ricepaper_v3.png');
-}
+
 
 .my-text h2{
   color: #1F3A93;
