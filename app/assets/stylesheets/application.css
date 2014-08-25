@@ -13,12 +13,20 @@
   color: #1F3A93;
 }
 
+
+#my-brand,.navbar-nav li {
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
+}
+
+
+
 h2{
     margin: 0;
     color: #666;
     padding-top: 90px;
     font-size: 52px;
-    font-family: "trebuchet ms", sans-serif;
+    font-family: 'Lobster', cursive;
 }
 .item{
     background: cyan;
@@ -46,23 +54,19 @@ h2{
   background-color: white;
 }
 
-/*#myCarousel .item img {
-  position: absolute;
-  top: 0;
-  left: 20%;
-  min-width: 60%;
-  height: 500px;
-  max-width: none;
-}*/
+
 
 
 .bs-example{
 	margin: 20px;
 }
 
-div.navbar{
-background: red;
-color:#fff
+div.navbar-custom1{
+  background: #36D7B7;
+}
+
+div.navbar-custom2{
+  background: #F5AB35;
 }
 
 span.glyphicon-shopping-cart {
