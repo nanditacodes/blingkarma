@@ -12,14 +12,14 @@ class ProductsController < ApplicationController
       category_name = params[:category]
       on_sale = params[:sale]
       if on_sale.present?
-        @products = Product.where(on_sale: true)
+        @products = Product.search_by_sale_and_available.sort_by_price_and_rating
       elsif category_name.present?
         cat_id = Category.find_by(name: params[:category])
-        @products = Product.where("category_id = ? and on_sale = ?", cat_id, false)
+        @products = Product.search_by_cat_and_available(cat_id).sort_by_price_and_rating
       else
-        @products = Product.all
+        @products = Product.all.sort_by_price_and_rating
       end
-      @products = @products.where(available: true).order(:list_price, rating: :desc).page(params[:page]).per(9)
+      @products = @products.page(params[:page]).per(9)
     end
   end
 
