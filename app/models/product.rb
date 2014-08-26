@@ -17,6 +17,10 @@ class Product < ActiveRecord::Base
   validates :available, inclusion: {in: [true, false]}
   validates :on_sale, inclusion: {in:[true, false]}
 
+  scope :search_by_sale_and_available, -> {where(on_sale:true, available: true)}
+  scope :search_by_cat_and_available, -> (cat_id) {where('category_id = ? and available = ?', cat_id, true)}
+  scope :sort_by_price_and_rating, -> {order(:list_price, rating: :desc)}
+
   belongs_to :category
   has_many   :reviews
   has_many   :order_products
@@ -50,6 +54,5 @@ class Product < ActiveRecord::Base
       Product.search(params[:search])
     end
   end
-
 
 end
