@@ -1,28 +1,53 @@
-== README
+==About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This was my final project for my 12 week course at The Iron Yard - "Bling Karma".  I created Bling karma to share my love of bling, glitter and sparkle with the rest of the world and to offer a platform to purchase exclusive and exotic jewelry at a reasonable rate. Bling is more than what you wear; it is a part of who you are. Are you Bold/Creative/Whimsical/Vibrant or maybe a little bit of all of these?  Bling Karma has something for all facets of your personality!  So feed your need to bling without feeling guilty about spending way too much.  Customers can also share their reviews of the product as well as their shopping experience with the review and rating system provided by Bling Karma. 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+==Technologies Incorporated
+
+* Ruby/Rails
+
+* Javascript
+
+* AJAX
+
+* jQuery
+
+* Twilio API
+
+* Stripe API
+
+* Highcharts API
+
+* Twitter Bootstrap
+
+* HMTL/CSS
+
+* Authentication with Devise
+
+* Custom handcrafted authorization for admin role.
+
+* Full text search (pg search) with autocomplete using typeahead.js
+
+
+==Installation
+
+* Install Ruby V2.1.1
+
+* Git clone this app into new directory
+
+* 'Bundle install' to get all gems installed
+
+* I am using Sequel Pro for all my database needs
+
+* 'rake db:create' to get database created
+
+* 'rake db:migrate' to get database migrated with all the neccessary tables and columns
+
+* 'rake db:seed' to prepopulate your DB with some data
+
+* Start rails server
+
+* Direct your browser to localhost:3000 (or which ever port you assign your rails server to)
+
+* Have Fun!
