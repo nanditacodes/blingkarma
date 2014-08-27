@@ -1,7 +1,7 @@
 
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders.where.not(order_status: 'pending')
+    @orders = current_user.orders.where.not(order_status: 'pending').order(updated_at: :desc)
   end
 
   def ship
