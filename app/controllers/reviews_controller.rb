@@ -10,8 +10,11 @@ class ReviewsController < ApplicationController
     @review.rating = 0 if @review.rating.blank?
     @review.user_id = current_user.id
     @product.save
-    rating = @product.reviews.average(:rating).to_i
+
+    @nz_reviews= Review.get_nz_reviews(@product.id)
+    rating = @nz_reviews.count > 0 ? (@nz_reviews.map(&:rating).sum/@nz_reviews.count).to_i : 0
     @product.update(rating: rating)
+
   end
 
   private
