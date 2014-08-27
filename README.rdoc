@@ -1,6 +1,15 @@
 ==About
 
-This was my final project for my 12 week "Rails Engineering" course at The Iron Yard - "Bling Karma".  I created Bling karma to share my love of bling, glitter and sparkle with the rest of the world and to offer a platform to purchase exclusive and exotic jewelry at a reasonable rate. Bling is more than what you wear; it is a part of who you are. Are you Bold/Creative/Whimsical/Vibrant or maybe a little bit of all of these?  Bling Karma has something for all facets of your personality!  So feed your need to bling without feeling guilty about spending way too much.  Customers can also share their reviews of the product as well as their shopping experience with the review and rating system provided by Bling Karma. 
+This was my final project for my 12 week "Rails Engineering" course at The Iron Yard - "Bling Karma".
+I created Bling karma to share my love of bling, glitter and sparkle with the rest of the world and to
+offer a platform to purchase exclusive and exotic jewelry at a reasonable rate.
+Bling Karma is a full fledged ordering system. Users can add to shopping cart and checkout using STRIPE as a payment gateway.
+I have also custom handcrafted an admin role. Admins can do inventory mangements, report generation in the form of charts and also order
+status management. Once the order is paid for, the admin can ship it; customers will get a text notification once their order is shipped.
+Customers can also share their reviews of the product as well as their shopping experience with the review 
+and rating system provided by Bling Karma.
+
+
 
 
 ==Technologies Incorporated
