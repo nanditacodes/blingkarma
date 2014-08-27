@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
         cat_id = Category.find_by(name: params[:category])
         @products = Product.search_by_cat_and_available(cat_id).sort_by_price_and_rating
       else
-        @products = Product.where.not(on_sale: true).sort_by_price_and_rating
+        @products = Product.where.not(on_sale: true, available: false).sort_by_price_and_rating
       end
       @products = @products.page(params[:page]).per(9)
     end
