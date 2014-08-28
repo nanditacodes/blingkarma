@@ -6,7 +6,7 @@ offer a platform to purchase exclusive and exotic jewelry at a reasonable rate.
 Bling Karma is a full fledged ordering system. Users can add to shopping cart and checkout using STRIPE as a payment gateway.
 I have also custom handcrafted an admin role. Admins can do inventory mangements, report generation in the form of charts and also order
 status management. Once the order is paid for, the admin can ship it; customers will get a text notification once their order is shipped.
-Customers can also share their reviews of the product as well as their shopping experience with the review 
+Customers can also share their reviews of the product as well as their shopping experience with the review
 and rating system provided by Bling Karma.
 
 
@@ -60,3 +60,9 @@ and rating system provided by Bling Karma.
 * Direct your browser to localhost:3000 (or which ever port you assign your rails server to)
 
 * Have Fun! I love hearing what others think about what I built. Do let me know!
+
+==Usage
+
+* Click on New Customer/Returning Customer depending on whether you have already registered with the system.
+
+* To checkout, use this test credit card: 4242 4242 4242 4242, an expiry date in the future and any 3 digit code.
