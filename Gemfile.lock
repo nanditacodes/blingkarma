@@ -91,6 +91,11 @@ GEM
       fog-core
       fog-json
     formatador (0.2.5)
+    heroku (1.6.3)
+      json (>= 1.1.0)
+      launchy (>= 0.3.2)
+      rest-client (>= 1.2.0, < 2.0.0)
+      rest-client (>= 1.2.0, < 2.0.0)
     hike (1.2.3)
     i18n (0.6.11)
     inflecto (0.0.2)
@@ -230,6 +235,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   fog
+  heroku
   jbuilder (~> 2.0)
   jquery-rails
   kaminari-bootstrap (~> 3.0.1)

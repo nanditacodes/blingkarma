@@ -29,6 +29,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'binding_of_caller'
   gem 'dotenv-rails'
+	gem 'heroku'
 end
 
 group :test do
